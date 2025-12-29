@@ -1,0 +1,73 @@
+/*게시글*/
+.post-list-item {
+    display: flex;
+    height: 3.3125rem;
+    padding: 0.9375rem 0;
+    align-items: center;
+    gap: 1.5rem;
+    border-bottom: 1px solid #888;
+    background: #FFF;
+}
+.post-list-item:hover {
+    background-color: #f0f0f0;
+}
+/*게시글-Frame11*/
+.post-list-item-content {
+    display: flex;
+    width: 75rem;
+    justify-content: space-between;
+    align-items: center;
+}
+/*게시글-Frame11-글제목*/
+.post-list-item-title h2 {
+    width: 24rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+
+    overflow: hidden;
+    color: #000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+/*게시글-Frame11-글정보*/
+.post-list-item-infos {
+    display: flex;
+    width: 24rem;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+    flex-shrink: 0;
+}
+/*게시글-Frame11-글정보-글짜*/
+.post-list-item-infos span {
+    width: 4.875rem;
+    height: 1.1875rem;
+    flex-shrink: 0;
+
+    color: #888;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.post-list-item-title {
+    width: 4.875rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+
+    color: #888;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

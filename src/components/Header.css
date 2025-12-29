@@ -1,0 +1,95 @@
+:root {
+  --primary-color: #E30613; /* 자람 로고의 붉은색 */
+  --text-color: #333333;    /* 기본 검은 글씨 */
+  --border-color: #EEEEEE;  /* 연한 테두리 */
+  --bg-gray: #F5F5F5;       /* 검색창 배경 회색 */
+}
+/*헤더*/
+.header-container-outer{
+    display: flex;
+    width: 90rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.625rem;
+
+    border-bottom: 3px solid #EEE;
+    background: #FFF;
+}
+/*frame14*/
+.header-container-inner{
+    display: flex;
+    width: 90rem;
+    padding: 1.25rem;
+    justify-content: space-between;
+    align-items: center;
+}
+/*jaram-logo 1*/
+.header-logo img{
+    width: 5rem;
+    height: 5rem;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+}
+/*검색창*/
+.header-search-box{
+    display: flex;
+    align-items: center;
+    gap: 0.3125rem;
+
+    width: 37.5rem;
+    height: 4.1875rem;
+
+    border-radius: 0.625rem;
+    border: 3px solid #888;
+    background: #FFF;
+}
+/*rectangle3*/
+.header-search-box input {
+    flex: 1;                
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: transparent;
+}
+
+/*버튼들*/
+.auth-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 0.3125rem;
+}
+
+.btn {
+    display: flex;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;       /* 마우스 올렸을 때 0.2초 반응 */
+}
+/*빨강버튼*/
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 0.625rem;
+    background: #E50113;
+}
+
+.btn-primary:hover {
+    background-color: #C00000; 
+    transform: translateY(-2px); 
+}
+
+/*회색버튼*/
+.btn-secondary {
+  background-color: white;
+  color: #666;
+  border: 1px solid #ddd;
+}
+.btn-secondary:hover {
+  background-color: #f9f9f9;
+}
