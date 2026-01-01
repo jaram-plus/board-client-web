@@ -1,0 +1,211 @@
+.post-detail-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+  background-color: #F5F5F5;
+}
+
+.post-detail-container {
+  width: 90rem;
+  background-color: white;
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.back-button:hover {
+  color: #E30613;
+}
+
+.post-detail-header {
+  border-bottom: 2px solid #EEEEEE;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.post-detail-header h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.post-detail-meta {
+  display: flex;
+  gap: 1rem;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.post-detail-meta span {
+  display: flex;
+  align-items: center;
+}
+
+.author {
+  font-weight: bold;
+  color: #333;
+}
+
+.post-detail-content {
+  min-height: 20rem;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.post-detail-content h2 {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem 0;
+}
+
+.post-detail-content p {
+  margin: 1rem 0;
+}
+
+.post-detail-content ul {
+  margin-left: 2rem;
+}
+
+.post-detail-content li {
+  margin: 0.5rem 0;
+}
+
+.post-detail-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid #EEEEEE;
+  border-bottom: 1px solid #EEEEEE;
+  margin-bottom: 2rem;
+}
+
+.like-button {
+  padding: 0.8rem 2rem;
+  background-color: #E30613;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.like-button:hover {
+  background-color: #C00510;
+}
+
+.post-control-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-button, .delete-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #EEEEEE;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.edit-button:hover {
+  background-color: #F5F5F5;
+}
+
+.delete-button {
+  color: #E30613;
+  border-color: #E30613;
+}
+
+.delete-button:hover {
+  background-color: #FFF5F5;
+}
+
+.comment-section {
+  margin-top: 3rem;
+}
+
+.comment-section h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.comment-item {
+  padding: 1rem;
+  background-color: #F9F9F9;
+  border-radius: 4px;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.comment-author {
+  font-weight: bold;
+  color: #333;
+}
+
+.comment-date {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.comment-content {
+  color: #555;
+  line-height: 1.6;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.comment-form textarea {
+  padding: 1rem;
+  border: 1px solid #EEEEEE;
+  border-radius: 4px;
+  font-size: 1rem;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.comment-form textarea:focus {
+  outline: none;
+  border-color: #E30613;
+}
+
+.comment-submit {
+  align-self: flex-end;
+  padding: 0.8rem 2rem;
+  background-color: #E30613;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.comment-submit:hover {
+  background-color: #C00510;
+}
