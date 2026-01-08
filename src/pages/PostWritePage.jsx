@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createPost } from '../api/postApi';
-import './PostWritePage.css';
+
 
 const PostWritePage = () => {
   const navigate = useNavigate();
@@ -37,10 +37,10 @@ const PostWritePage = () => {
 
       // 작성된 게시글 상세 페이지로 이동
       if (response.postId) {
-        navigate(`/post/${response.postId}`);
+        navigate(`/jaram/board/posts/${response.postId}`);
       } else {
         // postId가 없으면 메인으로 이동
-        navigate('/');
+        navigate('/jaram/board/posts');
       }
     } catch (error) {
       console.error('게시글 작성 실패:', error);
@@ -57,14 +57,16 @@ const PostWritePage = () => {
   };
 
   return (
-    <div className="post-write-wrapper">
-      <div className="post-write-container">
-        <h1>게시글 작성</h1>
+    // 페이지 래퍼
+    <div className="w-full flex justify-center py-8 bg-[#F5F5F5] min-h-[calc(100vh-10rem)]">
+      {/* 작성 컨테이너 */}
+      <div className="w-[90rem] bg-white p-12 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.1)]">
+        <h1 className="text-[2rem] text-[#333] mb-8 pb-4 border-b-2 border-[#EEEEEE]">게시글 작성</h1>
 
         <form onSubmit={handleSubmit}>
           {/* 제목 입력 */}
-          <div className="form-group">
-            <label htmlFor="title">제목</label>
+          <div className="mb-8 relative">
+            <label htmlFor="title" className="block text-[1.1rem] font-bold text-[#333] mb-2">제목</label>
             <input
               type="text"
               id="title"
@@ -72,28 +74,30 @@ const PostWritePage = () => {
               maxLength="100"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              className="w-full p-4 border border-[#EEEEEE] rounded text-base focus:outline-none focus:border-[#E30613]"
             />
-            <span className="char-count">{title.length}/100</span>
+            <span className="absolute right-4 bottom-[-1.5rem] text-[#888] text-sm">{title.length}/100</span>
           </div>
 
           {/* 본문 입력 */}
-          <div className="form-group">
-            <label htmlFor="content">본문</label>
+          <div className="mb-8 relative">
+            <label htmlFor="content" className="block text-[1.1rem] font-bold text-[#333] mb-2">본문</label>
             <textarea
               id="content"
               placeholder="본문을 입력하세요 (최소 10자)"
               rows="20"
               value={content}
               onChange={(e) => setContent(e.target.value)}
+              className="w-full p-4 border border-[#EEEEEE] rounded text-base resize-y min-h-[20rem] focus:outline-none focus:border-[#E30613]"
             />
-            <span className="char-count">{content.length}자</span>
+            <span className="absolute right-4 bottom-[-1.5rem] text-[#888] text-sm">{content.length}자</span>
           </div>
 
           {/* 버튼 */}
-          <div className="form-actions">
+          <div className="flex justify-end gap-4 mt-12">
             <button
               type="button"
-              className="cancel-button"
+              className="px-8 py-4 bg-[#F5F5F5] text-[#333] border border-[#EEEEEE] rounded cursor-pointer hover:bg-[#EEEEEE]"
               onClick={handleCancel}
               disabled={isSubmitting}
             >
@@ -101,7 +105,7 @@ const PostWritePage = () => {
             </button>
             <button
               type="submit"
-              className="submit-button"
+              className="px-8 py-4 bg-[#E30613] text-white border-none rounded cursor-pointer hover:bg-[#C00510]"
               disabled={isSubmitting}
             >
               {isSubmitting ? '작성 중...' : '작성 완료'}

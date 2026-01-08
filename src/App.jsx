@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PostListPage from './pages/PostListPage';
@@ -7,19 +7,18 @@ import PostWritePage from './pages/PostWritePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import './index.css';
-import './App.css';
-
 function App() {
   return (
     <Router>
-      <div className="app">
+      <div className="min-h-screen flex flex-col">
         <Header />
 
-        <main className="main-content">
+        <main className="flex-1 min-h-[calc(100vh-10rem)]">
           <Routes>
-            <Route path="/" element={<PostListPage />} />
-            <Route path="/post/:id" element={<PostDetailPage />} />
-            <Route path="/post/write" element={<PostWritePage />} />
+            <Route path="/" element={<Navigate to="/jaram/board/posts" replace />} />
+            <Route path="/jaram/board/posts" element={<PostListPage />} />
+            <Route path="/jaram/board/posts/:id" element={<PostDetailPage />} />
+            <Route path="/jaram/board/write" element={<PostWritePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="*" element={<NotFound />} />

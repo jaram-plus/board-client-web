@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { formatDate } from '../api/postApi';
-import './PostDetailPage.css';
+
 
 const PostDetailPage = () => {
   const { id } = useParams();
@@ -55,11 +55,9 @@ const PostDetailPage = () => {
   // 로딩 중
   if (loading) {
     return (
-      <div className="post-detail-wrapper">
-        <div className="post-detail-container">
-          <div style={{ textAlign: 'center', padding: '4rem', color: '#888' }}>
-            <p>게시글을 불러오는 중...</p>
-          </div>
+      <div className="w-full min-h-[calc(100vh-10rem)] flex justify-center items-center bg-[#F5F5F5]">
+        <div className="text-center p-16 text-[#888]">
+          <p>게시글을 불러오는 중...</p>
         </div>
       </div>
     );
@@ -68,24 +66,15 @@ const PostDetailPage = () => {
   // 에러 발생
   if (error) {
     return (
-      <div className="post-detail-wrapper">
-        <div className="post-detail-container">
-          <div style={{ textAlign: 'center', padding: '4rem' }}>
-            <p style={{ color: '#E30613', marginBottom: '1rem' }}>{error}</p>
-            <button
-              onClick={() => navigate(-1)}
-              style={{
-                padding: '0.8rem 2rem',
-                backgroundColor: '#E30613',
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer'
-              }}
-            >
-              목록으로 돌아가기
-            </button>
-          </div>
+      <div className="w-full min-h-[calc(100vh-10rem)] flex justify-center items-center bg-[#F5F5F5]">
+        <div className="text-center p-16">
+          <p className="text-[#E30613] mb-4">{error}</p>
+          <button
+            onClick={() => navigate(-1)}
+            className="px-8 py-3 bg-[#E30613] text-white rounded hover:bg-[#C00510]"
+          >
+            목록으로 돌아가기
+          </button>
         </div>
       </div>
     );
@@ -94,92 +83,93 @@ const PostDetailPage = () => {
   // 게시글이 없을 때
   if (!post) {
     return (
-      <div className="post-detail-wrapper">
-        <div className="post-detail-container">
-          <div style={{ textAlign: 'center', padding: '4rem', color: '#888' }}>
-            <p>게시글을 찾을 수 없습니다.</p>
-            <button
-              onClick={() => navigate(-1)}
-              style={{
-                marginTop: '1rem',
-                padding: '0.8rem 2rem',
-                backgroundColor: '#E30613',
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer'
-              }}
-            >
-              목록으로 돌아가기
-            </button>
-          </div>
+      <div className="w-full min-h-[calc(100vh-10rem)] flex justify-center items-center bg-[#F5F5F5]">
+        <div className="text-center p-16 text-[#888]">
+          <p>게시글을 찾을 수 없습니다.</p>
+          <button
+            onClick={() => navigate(-1)}
+            className="mt-4 px-8 py-3 bg-[#E30613] text-white rounded hover:bg-[#C00510]"
+          >
+            목록으로 돌아가기
+          </button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="post-detail-wrapper">
-      <div className="post-detail-container">
+    // 페이지 래퍼
+    <div className="w-full flex justify-center py-12 bg-[#F5F5F5] min-h-[calc(100vh-10rem)]">
+      {/* 메인 컨테이너 */}
+      <div className="w-[75rem] bg-white border border-[#EEEEEE] p-10 shadow-sm">
 
         {/* 뒤로가기 버튼 */}
-        <button className="back-button" onClick={() => navigate(-1)}>
+        <button
+          className="mb-8 text-[#666] hover:text-[#333] flex items-center gap-2 font-medium"
+          onClick={() => navigate(-1)}
+        >
           ← 목록으로
         </button>
 
         {/* 게시글 헤더 */}
-        <div className="post-detail-header">
-          <h1>{post.postTitle}</h1>
-          <div className="post-detail-meta">
-            <span className="author">{post.author}</span>
-            <span className="date">{formatDate(post.creationDate)}</span>
+        <div className="border-b border-[#333] pb-6 mb-8">
+          <h1 className="text-2xl font-bold text-[#333] mb-4">{post.postTitle}</h1>
+          <div className="flex gap-4 text-[#888] text-sm">
+            <span className="font-bold text-[#555]">{post.author}</span>
+            <span className="text-[#CCC]">|</span>
+            <span>{formatDate(post.creationDate)}</span>
           </div>
         </div>
 
         {/* 게시글 본문 */}
-        <div className="post-detail-content">
-          <p style={{ whiteSpace: 'pre-wrap' }}>{post.postContent}</p>
+        <div className="min-h-[20rem] text-[#333] leading-relaxed text-base mb-12 border-b border-[#EEEEEE] pb-12">
+          <p className="whitespace-pre-wrap">{post.postContent}</p>
         </div>
 
-        {/* 액션 버튼 */}
-        <div className="post-detail-actions">
-          <button className="like-button">👍 추천</button>
-          <div className="post-control-buttons">
-            <button className="edit-button">수정</button>
-            <button className="delete-button">삭제</button>
+        {/* 액션 버튼 (추천, 수정, 삭제) */}
+        <div className="flex justify-between items-center mb-12">
+          <button className="px-6 py-2 border border-[#E30613] text-[#E30613] rounded hover:bg-[#FFF0F0] font-bold flex items-center gap-2">
+            👍 추천
+          </button>
+          <div className="flex gap-2">
+            <button className="px-4 py-2 text-[#666] bg-[#F5F5F5] rounded hover:bg-[#E5E5E5]">수정</button>
+            <button className="px-4 py-2 text-[#666] bg-[#F5F5F5] rounded hover:bg-[#E5E5E5]">삭제</button>
           </div>
         </div>
 
-        {/* 댓글 섹션 (현재 API에 없음) */}
-        <div className="comment-section">
-          <h3>댓글 ({comments.length})</h3>
+        {/* 댓글 섹션 */}
+        <div className="bg-[#FAFAFA] p-8 rounded-lg">
+          <h3 className="text-lg font-bold text-[#333] mb-6">댓글 ({comments.length})</h3>
 
           {comments.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '2rem', color: '#888' }}>
+            <div className="text-center py-8 text-[#888] border-b border-[#EEEEEE] mb-6">
               <p>첫 댓글을 작성해보세요!</p>
             </div>
           ) : (
-            <div className="comment-list">
+            <div className="flex flex-col gap-4 mb-8">
               {comments.map(comment => (
-                <div key={comment.id} className="comment-item">
-                  <div className="comment-header">
-                    <span className="comment-author">{comment.author}</span>
-                    <span className="comment-date">{comment.date}</span>
+                <div key={comment.id} className="bg-white p-4 border border-[#EEEEEE] rounded">
+                  <div className="flex justify-between mb-2">
+                    <span className="font-bold text-[#333]">{comment.author}</span>
+                    <span className="text-sm text-[#888]">{comment.date}</span>
                   </div>
-                  <p className="comment-content">{comment.content}</p>
+                  <p className="text-[#555]">{comment.content}</p>
                 </div>
               ))}
             </div>
           )}
 
-          {/* 댓글 작성 폼 (기능 미구현) */}
-          <div className="comment-form">
+          {/* 댓글 작성 폼 */}
+          <div className="flex gap-2">
             <textarea
+              className="flex-1 p-4 border border-[#EEEEEE] rounded resize-none focus:outline-none focus:border-[#E30613]"
               placeholder="댓글 기능은 준비 중입니다..."
-              rows="4"
+              rows="3"
               disabled
             />
-            <button className="comment-submit" disabled>댓글 작성</button>
+            <button className="px-6 bg-[#888] text-white rounded font-bold cursor-not-allowed" disabled>
+              등록
+            </button>
           </div>
         </div>
 

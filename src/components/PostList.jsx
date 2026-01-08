@@ -1,23 +1,21 @@
-import React from 'react';
-import './PostList.css'; // 아까 그 CSS 파일 연결
-
-// 부모에게서 title, date 같은 데이터를 'props'로 받아옵니다.
 const PostList = ({ title, recommend, date, views, comments }) => {
   return (
-    <div className="post-list-item">
-      <div className="post-list-item-content">
-        
+    <div className="w-[90rem] h-[3.3125rem] py-[0.9375rem] flex items-center justify-center border-b border-[#888] bg-white hover:bg-[#f0f0f0]">
+      <div className="w-[75rem] flex justify-between items-center px-4">
+
         {/* 제목 영역 */}
-        <div className="post-list-item-title">
-          <h2>{title}</h2>
+        <div className="w-[24rem] shrink-0 pl-2">
+          <h2 className="w-full h-6 overflow-hidden text-ellipsis whitespace-nowrap text-black text-base font-normal leading-normal m-0 font-['Inter']">
+            {title}
+          </h2>
         </div>
-        
+
         {/* 정보 영역 (추천, 날짜, 조회, 댓글) */}
-        <div className="post-list-item-infos">
-          <span>{recommend}</span>
-          <span>{date}</span>
-          <span>{views}</span>
-          <span>{comments}</span>
+        <div className="flex w-[24rem] justify-end items-center gap-6 shrink-0">
+          <span className="w-[4.875rem] h-[1.1875rem] shrink-0 text-[#888] text-center font-['Inter'] text-base font-normal leading-normal">{recommend}</span>
+          <span className="w-[4.875rem] h-[1.1875rem] shrink-0 text-[#888] text-center font-['Inter'] text-base font-normal leading-normal">{date}</span>
+          <span className="w-[4.875rem] h-[1.1875rem] shrink-0 text-[#888] text-center font-['Inter'] text-base font-normal leading-normal">{views}</span>
+          <span className="w-[4.875rem] h-[1.1875rem] shrink-0 text-[#888] text-center font-['Inter'] text-base font-normal leading-normal">{comments}</span>
         </div>
 
       </div>
