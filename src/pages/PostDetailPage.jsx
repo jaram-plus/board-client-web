@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { formatDate } from '../api/postApi';
+import { getPostDetail, formatDate } from '../api/postApi';
 import './PostDetailPage.css';
 
 const PostDetailPage = () => {
@@ -22,19 +22,8 @@ const PostDetailPage = () => {
       setLoading(true);
       setError(null);
 
-      // Mock 데이터 사용 (백엔드 서버가 준비되면 주석 해제)
-      const mockPosts = {
-        1: { postTitle: "자람 게시판에 오신 것을 환영합니다", postContent: "안녕하세요! 자람 게시판에 오신 것을 환영합니다.\n\n이곳은 자람 동아리 회원들이 자유롭게 소통하고 정보를 공유하는 공간입니다.\n\n많은 활동 부탁드립니다!", author: "관리자", creationDate: "2025-12-29T10:00:00" },
-        2: { postTitle: "리액트 컴포넌트 분리하기", postContent: "리액트에서 컴포넌트를 효과적으로 분리하는 방법에 대해 공유합니다.\n\n1. 재사용 가능한 단위로 분리\n2. 단일 책임 원칙 적용\n3. Props를 통한 데이터 전달\n\n여러분의 의견도 들려주세요!", author: "신동빈", creationDate: "2025-12-28T14:30:00" },
-        3: { postTitle: "CSS 구조 잡는 법", postContent: "CSS 구조를 체계적으로 관리하는 방법을 소개합니다.\n\n- BEM 방법론 사용\n- CSS 모듈화\n- 변수 활용\n\n좋은 CSS 구조는 유지보수를 쉽게 만들어줍니다.", author: "홍길동", creationDate: "2025-12-27T09:20:00" },
-        4: { postTitle: "프론트엔드 개발자 구합니다", postContent: "스타트업에서 프론트엔드 개발자를 모집합니다.\n\n자격 요건:\n- React 경험 1년 이상\n- TypeScript 사용 가능\n- 팀워크 중시\n\n관심 있으신 분은 연락 주세요!", author: "김철수", creationDate: "2025-12-26T16:45:00" },
-        5: { postTitle: "오늘 점심 메뉴 추천", postContent: "오늘 점심 뭐 먹을지 고민되시나요?\n\n추천 메뉴:\n1. 김치찌개\n2. 돈까스\n3. 비빔밥\n\n여러분의 추천도 댓글로 남겨주세요!", author: "이영희", creationDate: "2025-12-25T12:15:00" }
-      };
-
-      // 실제 API 호출 (백엔드 준비되면 사용)
-      // const data = await getPostDetail(id);
-
-      const data = mockPosts[id];
+      // 실제 API 호출
+      const data = await getPostDetail(id);
 
       if (data) {
         setPost(data);

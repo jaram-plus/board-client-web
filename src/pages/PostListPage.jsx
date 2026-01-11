@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PostList from '../components/PostList';
 import Pagenation from '../components/Pagenation';
-import { formatDate } from '../api/postApi';
+import { getPostList, formatDate } from '../api/postApi';
 import './PostListPage.css';
 
 const PostListPage = () => {
@@ -21,21 +21,8 @@ const PostListPage = () => {
       setLoading(true);
       setError(null);
 
-      // Mock 데이터 사용 (백엔드 서버가 준비되면 주석 해제)
-      const mockData = {
-        postList: [
-          { postId: 1, postTitle: "자람 게시판에 오신 것을 환영합니다", author: "관리자", creationDate: "2025-12-29T10:00:00" },
-          { postId: 2, postTitle: "리액트 컴포넌트 분리하기", author: "신동빈", creationDate: "2025-12-28T14:30:00" },
-          { postId: 3, postTitle: "CSS 구조 잡는 법", author: "홍길동", creationDate: "2025-12-27T09:20:00" },
-          { postId: 4, postTitle: "프론트엔드 개발자 구합니다", author: "김철수", creationDate: "2025-12-26T16:45:00" },
-          { postId: 5, postTitle: "오늘 점심 메뉴 추천", author: "이영희", creationDate: "2025-12-25T12:15:00" },
-        ]
-      };
-
-      // 실제 API 호출 (백엔드 준비되면 사용)
-      // const data = await getPostList();
-
-      const data = mockData;
+      // 실제 API 호출
+      const data = await getPostList();
 
       if (data && data.postList) {
         setPosts(data.postList);

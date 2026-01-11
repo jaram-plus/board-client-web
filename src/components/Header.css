@@ -46,11 +46,36 @@
 }
 /*rectangle3*/
 .header-search-box input {
-    flex: 1;                
+    flex: 1;
     border: none;
     outline: none;
     font-size: 1rem;
     background: transparent;
+    padding: 0 1rem;
+    height: 100%;
+}
+
+/* 검색 버튼 */
+.search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 1rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.search-button img {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: contain;
+}
+
+.search-button:hover {
+    opacity: 0.7;
 }
 
 /*버튼들*/

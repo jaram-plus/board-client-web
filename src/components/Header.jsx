@@ -9,10 +9,12 @@ const Header = () => {
             <div className="header-logo"><img src={LogoImage} alt="자람 게시판 로고"/></div>
 
             <div className = "header-search-box">
-                <input type="text" 
-                placeholder="검색어를 입력하세요" 
+                <input type="text"
+                placeholder="검색어를 입력하세요"
                 />
-                <button className="search-button">🔍</button>
+                <button className="search-button">
+                    <img src="/search.png" alt="검색" />
+                </button>
             </div>
 
             <div className="auth-buttons">
