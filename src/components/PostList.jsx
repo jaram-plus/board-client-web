@@ -1,4 +1,4 @@
-const PostList = ({ title, recommend, date, views, comments }) => {
+const PostList = ({ title, recommend, date, views }) => {
   return (
     <div className="w-[90rem] h-[3.3125rem] py-[0.9375rem] flex items-center justify-center border-b border-[#888] bg-white hover:bg-[#f0f0f0]">
       <div className="w-[75rem] flex justify-between items-center px-4">
@@ -10,12 +10,11 @@ const PostList = ({ title, recommend, date, views, comments }) => {
           </h2>
         </div>
 
-        {/* 정보 영역 (추천, 날짜, 조회, 댓글) */}
-        <div className="flex w-[24rem] justify-end items-center gap-6 shrink-0">
+        {/* 정보 영역 (추천, 날짜, 조회) */}
+        <div className="flex w-[20rem] justify-end items-center gap-6 shrink-0">
           <span className="w-[4.875rem] h-[1.1875rem] shrink-0 text-[#888] text-center font-['Inter'] text-base font-normal leading-normal">{recommend}</span>
           <span className="w-[4.875rem] h-[1.1875rem] shrink-0 text-[#888] text-center font-['Inter'] text-base font-normal leading-normal">{date}</span>
           <span className="w-[4.875rem] h-[1.1875rem] shrink-0 text-[#888] text-center font-['Inter'] text-base font-normal leading-normal">{views}</span>
-          <span className="w-[4.875rem] h-[1.1875rem] shrink-0 text-[#888] text-center font-['Inter'] text-base font-normal leading-normal">{comments}</span>
         </div>
 
       </div>

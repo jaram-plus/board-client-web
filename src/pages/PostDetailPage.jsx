@@ -38,9 +38,6 @@ const PostDetailPage = () => {
     }
   };
 
-  // 댓글 기능은 현재 API에 없으므로 Mock 데이터 유지
-  const comments = [];
-
   // 로딩 중
   if (loading) {
     return (
@@ -116,49 +113,13 @@ const PostDetailPage = () => {
         </div>
 
         {/* 액션 버튼 (추천, 수정, 삭제) */}
-        <div className="flex justify-between items-center mb-12">
+        <div className="flex justify-between items-center">
           <button className="px-6 py-2 border border-[#E30613] text-[#E30613] rounded hover:bg-[#FFF0F0] font-bold flex items-center gap-2">
             👍 추천
           </button>
           <div className="flex gap-2">
             <button className="px-4 py-2 text-[#666] bg-[#F5F5F5] rounded hover:bg-[#E5E5E5]">수정</button>
             <button className="px-4 py-2 text-[#666] bg-[#F5F5F5] rounded hover:bg-[#E5E5E5]">삭제</button>
-          </div>
-        </div>
-
-        {/* 댓글 섹션 */}
-        <div className="bg-[#FAFAFA] p-8 rounded-lg">
-          <h3 className="text-lg font-bold text-[#333] mb-6">댓글 ({comments.length})</h3>
-
-          {comments.length === 0 ? (
-            <div className="text-center py-8 text-[#888] border-b border-[#EEEEEE] mb-6">
-              <p>첫 댓글을 작성해보세요!</p>
-            </div>
-          ) : (
-            <div className="flex flex-col gap-4 mb-8">
-              {comments.map(comment => (
-                <div key={comment.id} className="bg-white p-4 border border-[#EEEEEE] rounded">
-                  <div className="flex justify-between mb-2">
-                    <span className="font-bold text-[#333]">{comment.author}</span>
-                    <span className="text-sm text-[#888]">{comment.date}</span>
-                  </div>
-                  <p className="text-[#555]">{comment.content}</p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* 댓글 작성 폼 */}
-          <div className="flex gap-2">
-            <textarea
-              className="flex-1 p-4 border border-[#EEEEEE] rounded resize-none focus:outline-none focus:border-[#E30613]"
-              placeholder="댓글 기능은 준비 중입니다..."
-              rows="3"
-              disabled
-            />
-            <button className="px-6 bg-[#888] text-white rounded font-bold cursor-not-allowed" disabled>
-              등록
-            </button>
           </div>
         </div>
 

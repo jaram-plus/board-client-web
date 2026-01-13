@@ -95,11 +95,10 @@ const PostListPage = () => {
             <div className="w-[24rem] shrink-0 pl-2">
               <h2 className="text-base font-normal text-left text-[#333] m-0">제목</h2>
             </div>
-            <div className="flex w-[24rem] justify-end items-center gap-6 shrink-0">
+            <div className="flex w-[20rem] justify-end items-center gap-6 shrink-0">
               <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">추천</span>
               <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">작성일</span>
               <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">조회</span>
-              <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">댓글</span>
             </div>
           </div>
         </div>
@@ -122,11 +121,10 @@ const PostListPage = () => {
           <div className="w-[24rem] shrink-0 pl-2">
             <h2 className="text-base font-normal text-left text-[#333] m-0">제목</h2>
           </div>
-          <div className="flex w-[24rem] justify-end items-center gap-6 shrink-0">
+          <div className="flex w-[20rem] justify-end items-center gap-6 shrink-0">
             <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">추천</span>
             <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">작성일</span>
             <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">조회</span>
-            <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">댓글</span>
           </div>
         </div>
       </div>
@@ -143,7 +141,6 @@ const PostListPage = () => {
             recommend={0}
             date={formatDate(post.creationDate)}
             views={0}
-            comments={0}
           />
         </Link>
       ))}
