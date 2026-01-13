@@ -12,7 +12,6 @@ const Header = () => {
                         <img src={LogoImage} alt="자람 게시판 로고" />
                     </Link>
                 </div>
-
                 <div className="header-search-box">
                     <input type="text"
                         placeholder="검색어를 입력하세요"

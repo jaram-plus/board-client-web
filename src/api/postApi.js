@@ -12,7 +12,7 @@ import apiClient from './axios.config';
 // 1. 게시글 목록 조회
 export const getPostList = async () => {
   try {
-    const response = await apiClient.get('/jaram/board');
+    const response = await apiClient.get('/jaram/board/');
     return response.data; // { postList: [...] }
   } catch (error) {
     console.error('게시글 목록 조회 실패:', error);

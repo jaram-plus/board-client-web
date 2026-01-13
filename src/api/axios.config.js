@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Axios 인스턴스 생성
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8080', // 백엔드 서버 주소 (환경에 맞게 수정)
+  baseURL: '', // Vite proxy 사용으로 빈 문자열 (같은 origin 사용)
   timeout: 10000, // 10초 타임아웃
   headers: {
     'Content-Type': 'application/json',

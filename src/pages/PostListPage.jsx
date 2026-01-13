@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import PostList from '../components/PostList';
 import Pagenation from '../components/Pagenation';
+import { getPostList, formatDate } from '../api/postApi';
 import PageTitle from '../components/PageTitle';
-import { formatDate } from '../api/postApi';
 
 
 const PostListPage = () => {
@@ -34,21 +34,12 @@ const PostListPage = () => {
       setLoading(true);
       setError(null);
 
-      // Mock 데이터 확장
-      const allMockData = [
-        { postId: 1, category: 'notice', postTitle: "[공지] 자람 게시판 이용 수칙", author: "관리자", creationDate: "2025-12-29T10:00:00" },
-        { postId: 2, category: 'free', postTitle: "리액트 컴포넌트 분리하기", author: "신동빈", creationDate: "2025-12-28T14:30:00" },
-        { postId: 3, category: 'free', postTitle: "CSS 구조 잡는 법", author: "홍길동", creationDate: "2025-12-27T09:20:00" },
-        { postId: 4, category: 'suggestion', postTitle: "게시판 다크모드 추가해주세요", author: "김철수", creationDate: "2025-12-26T16:45:00" },
-        { postId: 5, category: 'free', postTitle: "오늘 점심 메뉴 추천", author: "이영희", creationDate: "2025-12-25T12:15:00" },
-        { postId: 6, category: 'qna', postTitle: "리액트 라우터 질문있습니다", author: "박지성", creationDate: "2025-12-24T11:00:00" },
-        { postId: 7, category: 'notice', postTitle: "[공지] 서버 점검 안내", author: "관리자", creationDate: "2025-12-30T09:00:00" },
-      ];
+      // 실제 API 호출
+      const data = await getPostList();
 
-      // 카테고리 필터링
-      let filteredPosts = allMockData;
-      if (category) {
-        filteredPosts = allMockData.filter(post => post.category === category);
+      let filteredPosts = [];
+      if (data && data.postList) {
+        filteredPosts = data.postList;
       }
 
       // 최신순 정렬
@@ -67,8 +58,8 @@ const PostListPage = () => {
   // 로딩 중
   if (loading) {
     return (
-      <div className="post-list-wrapper">
-        <div style={{ textAlign: 'center', padding: '4rem', color: '#888' }}>
+      <div className="w-full flex flex-col items-center py-8">
+        <div className="text-center p-16 text-[#888]">
           <p>게시글을 불러오는 중...</p>
         </div>
       </div>
@@ -78,19 +69,12 @@ const PostListPage = () => {
   // 에러 발생
   if (error) {
     return (
-      <div className="post-list-wrapper">
-        <div style={{ textAlign: 'center', padding: '4rem' }}>
-          <p style={{ color: '#E30613', marginBottom: '1rem' }}>{error}</p>
+      <div className="w-full flex flex-col items-center py-8">
+        <div className="text-center p-16">
+          <p className="text-[#E30613] mb-4">{error}</p>
           <button
             onClick={fetchPosts}
-            style={{
-              padding: '0.8rem 2rem',
-              backgroundColor: '#E30613',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
+            className="px-8 py-3 bg-[#E30613] text-white rounded hover:bg-[#C00510] cursor-pointer"
           >
             다시 시도
           </button>
@@ -102,21 +86,24 @@ const PostListPage = () => {
   // 게시글이 없을 때
   if (posts.length === 0) {
     return (
-      <div className="post-list-wrapper">
-        <div className="post-list-header">
-          <div className="post-list-item-content">
-            <div className="post-list-item-title">
-              <h2>제목</h2>
+      <div className="w-full flex flex-col items-center py-8">
+        <PageTitle title={currentTitle} />
+
+        {/* 리스트 헤더 */}
+        <div className="w-[90rem] bg-[#F5F5F5] border-t-2 border-[#333] h-12 flex items-center justify-center">
+          <div className="w-[75rem] flex justify-between px-4">
+            <div className="w-[24rem] shrink-0 pl-2">
+              <h2 className="text-base font-normal text-left text-[#333] m-0">제목</h2>
             </div>
-            <div className="post-list-item-infos">
-              <span>추천</span>
-              <span>작성일</span>
-              <span>조회</span>
-              <span>댓글</span>
+            <div className="flex w-[20rem] justify-end items-center gap-6 shrink-0">
+              <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">추천</span>
+              <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">작성일</span>
+              <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">조회</span>
             </div>
           </div>
         </div>
-        <div style={{ textAlign: 'center', padding: '4rem', color: '#888' }}>
+
+        <div className="text-center p-16 text-[#888]">
           <p>게시글이 없습니다.</p>
         </div>
       </div>
@@ -134,11 +121,10 @@ const PostListPage = () => {
           <div className="w-[24rem] shrink-0 pl-2">
             <h2 className="text-base font-normal text-left text-[#333] m-0">제목</h2>
           </div>
-          <div className="flex w-[24rem] justify-end items-center gap-6 shrink-0">
+          <div className="flex w-[20rem] justify-end items-center gap-6 shrink-0">
             <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">추천</span>
             <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">작성일</span>
             <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">조회</span>
-            <span className="w-[4.875rem] font-bold text-[#333] text-center text-base">댓글</span>
           </div>
         </div>
       </div>
@@ -155,7 +141,6 @@ const PostListPage = () => {
             recommend={0}
             date={formatDate(post.creationDate)}
             views={0}
-            comments={0}
           />
         </Link>
       ))}
