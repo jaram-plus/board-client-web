@@ -27,10 +27,10 @@ const Header = () => {
 
                 <div className="flex justify-end items-start gap-1.5">
                     <Link to="/login">
-                        <Button variant="primary" size="md">로그인</Button>
+                        <Button variant="primary" size="md" className="px-6">로그인</Button>
                     </Link>
                     <Link to="/jaram/board/write">
-                        <Button variant="primary" size="md">글쓰기</Button>
+                        <Button variant="primary" size="md" >글쓰기</Button>
                     </Link>
                 </div>
             </header>
