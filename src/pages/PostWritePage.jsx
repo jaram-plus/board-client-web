@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createPost } from '../api/postApi';
 import Button from '../components/Button'; // Import Button
+import Input from '../components/Input'; // Import Input
+import PageContainer from '../components/PageContainer';
+import Card from '../components/Card';
 
 const PostWritePage = () => {
   const navigate = useNavigate();
@@ -58,26 +61,25 @@ const PostWritePage = () => {
 
   return (
     // 페이지 래퍼
-    <div className="w-full flex justify-center py-8 bg-[#F5F5F5] min-h-[calc(100vh-10rem)]">
+    <PageContainer>
       {/* 작성 컨테이너 */}
-      <div className="w-[90rem] bg-white p-12 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.1)]">
+      <Card width="wide">
         <h1 className="text-[2rem] text-[#333] mb-8 pb-4 border-b-2 border-[#EEEEEE]">게시글 작성</h1>
 
         <form onSubmit={handleSubmit}>
+
           {/* 제목 입력 */}
-          <div className="mb-8 relative">
-            <label htmlFor="title" className="block text-[1.1rem] font-bold text-[#333] mb-2">제목</label>
-            <input
-              type="text"
-              id="title"
-              placeholder="제목을 입력하세요 (최대 100자)"
-              maxLength="100"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="w-full p-4 border border-[#EEEEEE] rounded text-base focus:outline-none focus:border-[#E30613]"
-            />
+          <Input
+            id="title"
+            label="제목"
+            placeholder="제목을 입력하세요 (최대 100자)"
+            maxLength="100"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="mb-8 relative"
+          >
             <span className="absolute right-4 bottom-[-1.5rem] text-[#888] text-sm">{title.length}/100</span>
-          </div>
+          </Input>
 
           {/* 본문 입력 */}
           <div className="mb-8 relative">
@@ -114,8 +116,8 @@ const PostWritePage = () => {
             </Button>
           </div>
         </form>
-      </div>
-    </div>
+      </Card>
+    </PageContainer>
   );
 };
 
