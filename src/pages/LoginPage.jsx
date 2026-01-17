@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-
+import Button from '../components/Button'; // Import Button
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -71,9 +71,9 @@ const LoginPage = () => {
           </div>
 
           {/* 로그인 버튼 */}
-          <button type="submit" className="w-full p-4 bg-[#E30613] text-white border-none rounded text-[1.1rem] cursor-pointer mt-4 hover:bg-[#C00510]">
+          <Button type="submit" variant="primary" size="full" className="mt-4">
             로그인
-          </button>
+          </Button>
         </form>
 
         {/* 푸터: 회원가입 링크 */}

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createPost } from '../api/postApi';
-
+import Button from '../components/Button'; // Import Button
 
 const PostWritePage = () => {
   const navigate = useNavigate();
@@ -95,21 +95,23 @@ const PostWritePage = () => {
 
           {/* 버튼 */}
           <div className="flex justify-end gap-4 mt-12">
-            <button
+            <Button
               type="button"
-              className="px-8 py-4 bg-[#F5F5F5] text-[#333] border border-[#EEEEEE] rounded cursor-pointer hover:bg-[#EEEEEE]"
+              variant="secondary"
+              size="lg"
               onClick={handleCancel}
               disabled={isSubmitting}
             >
               취소
-            </button>
-            <button
+            </Button>
+            <Button
               type="submit"
-              className="px-8 py-4 bg-[#E30613] text-white border-none rounded cursor-pointer hover:bg-[#C00510]"
+              variant="primary"
+              size="lg"
               disabled={isSubmitting}
             >
               {isSubmitting ? '작성 중...' : '작성 완료'}
-            </button>
+            </Button>
           </div>
         </form>
       </div>

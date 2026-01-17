@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import PostList from '../components/PostList';
 import Pagenation from '../components/Pagenation';
 import PageTitle from '../components/PageTitle';
+import Button from '../components/Button'; // Import Button
 import { formatDate } from '../api/postApi';
 
 
@@ -81,19 +82,12 @@ const PostListPage = () => {
       <div className="post-list-wrapper">
         <div style={{ textAlign: 'center', padding: '4rem' }}>
           <p style={{ color: '#E30613', marginBottom: '1rem' }}>{error}</p>
-          <button
+          <Button
             onClick={fetchPosts}
-            style={{
-              padding: '0.8rem 2rem',
-              backgroundColor: '#E30613',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
+            variant="primary"
           >
             다시 시도
-          </button>
+          </Button>
         </div>
       </div>
     );
